@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include('../template/head') %>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+</head>
+<html>
+<%- include('../template/navbar') %>
+  <main>
+    <div class="article__wrapper">
+      <form class="form__add-article" method="POST" action="/addArticle">
+        <div class="form__article__title">新增文章</div>
+        <% if (errorMessage && errorMessage.length> 0) { %>
+          <div class="form__remind">
+            <%= errorMessage %>
+          </div>
+          <% } %>
+            <select class="input__add-category" name="categoryId">
+              <% categories.forEach(category=> { %>
+                <option value="<%= category.id %>">
+                  <%- category.categoryName %>
+                </option>
+                <% }) %>
+            </select>
+            <input class="input__add-title" name="title" type="text" placeholder="標題">
+            <textarea id="editor" name="content"></textarea>
+            <input class="form__article__submit-btn" type="submit">
+      </form>
+    </div>
+  </main>
+  <%- include('../template/footer') %>
+    <script>
+      ClassicEditor.create(document.querySelector('#editor'), {
+      })
+        .then(editor => {
+          console.log('Editor was initialized', editor);
+        })
+        .catch(err => {
+          console.error(err.stack);
+        });
+    </script>
+
+</html>

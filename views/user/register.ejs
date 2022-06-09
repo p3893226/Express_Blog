@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <%- include('../template/head') %>
+</head>
+<html>
+  <%- include('../template/navbar') %>
+
+  <main>
+    <form class="form__user" method="POST" action="/register">
+      <div class="form__user__title">註冊</div>
+      <% if (errorMessage && errorMessage.length > 0) { %>
+        <div class="form__remind"><%= errorMessage %></div>
+      <% } %>
+      <div>帳號：<input class="input__user" name="username" type="text"></div>
+      <div>密碼：<input class="input__user" name="password" type="password"></div>
+      <input class="form__user__submit-btn" type="submit">
+    </form>
+  </main>
+
+
+  <footer>
+    <div>Copyright © 2021 Nana's Blog All Rights Reserved.</div>
+  </footer>
+</html>

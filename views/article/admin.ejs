@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include('../template/head') %>
+</head>
+<html>
+<%- include('../template/navbar') %>
+
+  <main>
+    <div class="articleList__wrapper">
+      <div class="title">文章管理</div>
+      <% articles.forEach(article=> { %>
+        <div class="articleList">
+          <div class="list__info">
+            <div class="article__category">
+              <%- article.Category.categoryName %>
+            </div>
+            <a class="list__title" href="/read/<%= article.id %>">
+              <%- article.title %>
+            </a>
+          </div>
+          <div class="list__time">
+            <div>
+              <%= article.createdAt.toDateString() %>
+            </div>
+          </div>
+          <div class="btn__wrapper">
+            <a class="article__edit-btn" href="/updateArticle/<%= article.id %>">編輯</a>
+            <a class="article__delete-btn" href="/deleteArticle/<%= article.id %>">刪除</a>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+  </main>
+
+  <%- include('../template/footer') %>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include('./template/head') %>
+</head>
+<html>
+<%- include('./template/navbar') %>
+
+  <main>
+    <div class="banner">
+      <div class="banner__desc">Welcome to Aidan's blog</div>
+    </div>
+    <% articles.forEach(article=> { %>
+
+      <div class="article__warpper">
+
+        <div class="article">
+          <div class="article__top">
+            <div class="list__info">
+              <div class="article__category">
+                <%= article.Category.categoryName %>
+              </div>
+              <div class="list__title" href="#">
+                <%= articles[0].title %>
+              </div>
+            </div>
+            <div class="list__time">
+              <%= article.createdAt.toDateString() %>
+            </div>
+          </div>
+          <div class="article__down">
+            <div class="list__content">
+              <p>
+                <%- article.content %>
+              </p>
+            </div>
+            <a class="article__read-btn" href="/read/<%= article.id%>">READ MORE</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+  </main>
+  <%- include('./template/footer') %>
+
+</html>

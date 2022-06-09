@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include('../template/head') %>
+</head>
+<html>
+<%- include('../template/navbar') %>
+  <main>
+    <div class="articleList__wrapper">
+      <div class="title">文章分類</div>
+      <% articles.forEach(article=> { %>
+        <div class="articleList">
+          <div class="list__info">
+            <div class="article__category">
+              <%- article.Category.categoryName %>
+            </div>
+            <a class="list__title" href="/read/<%= article.id %>">
+              <%- article.title %>
+            </a>
+          </div>
+          <div class="list__time">
+            <%= article.createdAt.toDateString() %>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+  </main>
+  <%- include('../template/footer') %>
+
+</html>

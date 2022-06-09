@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <%- include('../template/head') %>
+</head>
+<html>
+  <%- include('../template/navbar') %>
+  <main>
+    <div class="articleList__wrapper">
+      <div class="title">編輯分類</div>
+      <% if (errorMessage && errorMessage.length > 0) { %>
+        <div class="form__remind"><%= errorMessage %></div>
+      <% } %>
+      <% if (username) { %>
+        <form class="form__category" method="POST" action="/updateCategory/<%= category.id %>">
+          <input class="input__category" name="categoryName" type="text" placeholder="分類" value="<%- category.categoryName %>">
+          <input class="form__category__submit-btn" type="submit">
+        </form>
+      <% } %>
+    </div>
+  </main>
+  <%- include('../template/footer') %>
+</html>
